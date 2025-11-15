@@ -1,0 +1,11 @@
+# No additional dependencies needed!
+# The curator uses only Python standard library:
+# - json (for parsing JSONL)
+# - sqlite3 (for database storage)
+# - pathlib (for file operations)
+# - re (for regex pattern matching)
+# - datetime (for timestamps)
+# - hashlib (for content hashing)
+# - typing (for type hints)
+
+# All of these come with Python 3.7+ by default
