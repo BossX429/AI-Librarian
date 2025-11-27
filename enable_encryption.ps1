@@ -23,12 +23,12 @@ foreach ($dir in $directories) {
             # Verify encryption
             $result = cipher /c $dir
             if ($LASTEXITCODE -eq 0) {
-                Write-Host "  ✓ Successfully encrypted" -ForegroundColor Green
+                Write-Host "   Successfully encrypted" -ForegroundColor Green
             } else {
-                Write-Host "  ✗ Encryption may have failed" -ForegroundColor Red
+                Write-Host "   Encryption may have failed" -ForegroundColor Red
             }
         } catch {
-            Write-Host "  ✗ Error: $_" -ForegroundColor Red
+            Write-Host "   Error: $_" -ForegroundColor Red
         }
     } else {
         Write-Host "Directory not found: $dir" -ForegroundColor Gray
@@ -53,9 +53,9 @@ foreach ($dir in $directories) {
             $username = $env:USERNAME
             icacls $dir /grant:r "${username}:(OI)(CI)F" | Out-Null
             
-            Write-Host "  ✓ Permissions set to user-only access" -ForegroundColor Green
+            Write-Host "   Permissions set to user-only access" -ForegroundColor Green
         } catch {
-            Write-Host "  ✗ Error: $_" -ForegroundColor Red
+            Write-Host "   Error: $_" -ForegroundColor Red
         }
     }
     Write-Host ""
@@ -66,9 +66,9 @@ Write-Host "Security Hardening Complete!" -ForegroundColor Green
 Write-Host "==================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "Your sensitive data is now:" -ForegroundColor White
-Write-Host "  ✓ Encrypted at rest (Windows EFS)" -ForegroundColor Green
-Write-Host "  ✓ Protected with user-only permissions" -ForegroundColor Green
-Write-Host "  ✓ Safe from unauthorized access" -ForegroundColor Green
+Write-Host "   Encrypted at rest (Windows EFS)" -ForegroundColor Green
+Write-Host "   Protected with user-only permissions" -ForegroundColor Green
+Write-Host "   Safe from unauthorized access" -ForegroundColor Green
 Write-Host ""
 Write-Host "Note: Keep your Windows password secure!" -ForegroundColor Yellow
 Write-Host "EFS encryption is tied to your user account." -ForegroundColor Yellow
