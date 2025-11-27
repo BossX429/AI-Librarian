@@ -5,13 +5,12 @@ Autonomous AI Librarian - Background Orchestrator
 Runs everything automatically in the background with ZERO manual intervention.
 
 What it does:
-1. Starts Logger in background
-2. Watches for new/updated log files
-3. Auto-compresses logs every 5 minutes
-4. Auto-runs Curator after compression
-5. Runs 24/7 silently in background
+1. Watches for new/updated log files
+2. Auto-compresses logs every 5 minutes
+3. Auto-runs Curator after compression
+4. Runs 24/7 silently in background
 
-Set it and forget it!
+Logger runs independently - this just handles compression/curation.
 """
 
 import os
@@ -20,7 +19,6 @@ import time
 import subprocess
 from pathlib import Path
 from datetime import datetime, timedelta
-import threading
 import json
 
 # Fix Windows console encoding
@@ -32,7 +30,7 @@ if sys.platform == 'win32':
 
 class AutonomousLibrarian:
     """
-    Orchestrates all AI Librarian agents autonomously.
+    Orchestrates AI Librarian compression and curation autonomously.
     Runs forever in background, managing everything automatically.
     """
     
@@ -45,7 +43,6 @@ class AutonomousLibrarian:
         self.compressed_dir = self.compressor_dir / "compressed"
         
         # Tracking
-        self.logger_process = None
         self.last_compression_time = None
         self.last_curation_time = None
         self.processed_files = set()
@@ -74,33 +71,6 @@ class AutonomousLibrarian:
                 f.write(log_msg + '\n')
         except:
             pass  # Fail silently if can't write to log
-    
-    def start_logger(self):
-        """Start the Logger agent in background."""
-        self.log("🔴 Starting Logger Agent...")
-        
-        logger_script = self.logger_dir / "claude_desktop_logger.py"
-        
-        if not logger_script.exists():
-            self.log(f"❌ Logger script not found: {logger_script}")
-            return False
-        
-        try:
-            # Start logger as subprocess (runs in background)
-            self.logger_process = subprocess.Popen(
-                [sys.executable, str(logger_script)],
-                cwd=str(self.logger_dir),
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                creationflags=subprocess.CREATE_NO_WINDOW if sys.platform == 'win32' else 0
-            )
-            
-            self.log(f"✅ Logger started (PID: {self.logger_process.pid})")
-            return True
-            
-        except Exception as e:
-            self.log(f"❌ Failed to start Logger: {e}")
-            return False
     
     def get_unprocessed_logs(self):
         """Find raw log files that haven't been compressed yet."""
@@ -136,7 +106,7 @@ class AutonomousLibrarian:
         if not unprocessed:
             return False
         
-        self.log(f"⚡ Compressing {len(unprocessed)} log file(s)...")
+        self.log(f" Compressing {len(unprocessed)} log file(s)...")
         
         compressor_script = self.compressor_dir / "delta_compressor.py"
         
@@ -150,26 +120,26 @@ class AutonomousLibrarian:
             )
             
             if result.returncode == 0:
-                self.log("✅ Compression complete")
+                self.log(" Compression complete")
                 # Mark files as processed
                 for f in unprocessed:
                     self.processed_files.add(f.name)
                 self.last_compression_time = datetime.now()
                 return True
             else:
-                self.log(f"⚠️ Compression warning: {result.stderr[:200]}")
+                self.log(f" Compression warning: {result.stderr[:200]}")
                 return False
                 
         except subprocess.TimeoutExpired:
-            self.log("⚠️ Compression timeout (took >2 minutes)")
+            self.log(" Compression timeout (took >2 minutes)")
             return False
         except Exception as e:
-            self.log(f"❌ Compression error: {e}")
+            self.log(f" Compression error: {e}")
             return False
     
     def run_curator(self):
         """Run the Curator to update database."""
-        self.log("🧠 Running Curator...")
+        self.log(" Running Curator...")
         
         curator_script = self.curator_dir / "claude_curator.py"
         
@@ -183,35 +153,19 @@ class AutonomousLibrarian:
             )
             
             if result.returncode == 0:
-                self.log("✅ Curator complete")
+                self.log(" Curator complete")
                 self.last_curation_time = datetime.now()
                 return True
             else:
-                self.log(f"⚠️ Curator warning: {result.stderr[:200]}")
+                self.log(f" Curator warning: {result.stderr[:200]}")
                 return False
                 
         except subprocess.TimeoutExpired:
-            self.log("⚠️ Curator timeout (took >3 minutes)")
+            self.log(" Curator timeout (took >3 minutes)")
             return False
         except Exception as e:
-            self.log(f"❌ Curator error: {e}")
+            self.log(f" Curator error: {e}")
             return False
-    
-    def check_logger_health(self):
-        """Check if Logger is still running, restart if needed."""
-        if self.logger_process is None:
-            return False
-        
-        # Check if process is still alive
-        poll = self.logger_process.poll()
-        
-        if poll is None:
-            # Still running
-            return True
-        else:
-            # Process died, restart it
-            self.log("⚠️ Logger stopped, restarting...")
-            return self.start_logger()
     
     def should_compress_now(self):
         """Determine if we should run compression now."""
@@ -230,7 +184,6 @@ class AutonomousLibrarian:
     def get_stats(self):
         """Get current statistics."""
         stats = {
-            'logger_running': self.check_logger_health(),
             'raw_logs': len(list(self.raw_logs_dir.glob("*.jsonl"))),
             'compressed': len(list(self.compressed_dir.glob("*.jsonl"))),
             'last_compression': self.last_compression_time.strftime("%H:%M:%S") if self.last_compression_time else "Never",
@@ -240,9 +193,6 @@ class AutonomousLibrarian:
     
     def run_cycle(self):
         """Run one cycle of monitoring and processing."""
-        # Check Logger health
-        self.check_logger_health()
-        
         # Check if we should compress
         if self.should_compress_now():
             compressed = self.run_compressor()
@@ -254,18 +204,16 @@ class AutonomousLibrarian:
     
     def run_forever(self):
         """Main loop - runs forever in background."""
-        self.log("🚀 Autonomous AI Librarian Starting...")
-        self.log(f"   📂 Project: {self.project_root}")
-        self.log(f"   ⏱️  Compression interval: {self.compression_interval}s")
-        self.log(f"   🔄 Check interval: {self.check_interval}s")
+        self.log(" Autonomous AI Librarian Starting...")
+        self.log(f"    Project: {self.project_root}")
+        self.log(f"   ⏱  Compression interval: {self.compression_interval}s")
+        self.log(f"    Check interval: {self.check_interval}s")
+        self.log("")
+        self.log("ℹ Logger runs independently (claude_storage_parser.py)")
+        self.log("ℹ Orchestrator manages compression & curation only")
         self.log("")
         
-        # Start logger
-        if not self.start_logger():
-            self.log("❌ Failed to start Logger - exiting")
-            return
-        
-        self.log("✅ Autonomous mode active - running 24/7")
+        self.log(" Autonomous mode active - running 24/7")
         self.log("   Press Ctrl+C to stop")
         self.log("")
         
@@ -281,33 +229,19 @@ class AutonomousLibrarian:
                 # Log status every 20 cycles (~10 minutes)
                 if cycle_count % 20 == 0:
                     stats = self.get_stats()
-                    self.log(f"📊 Status: Logger={stats['logger_running']}, Raw={stats['raw_logs']}, "
+                    self.log(f" Status: Raw={stats['raw_logs']}, "
                            f"Compressed={stats['compressed']}, Last compression={stats['last_compression']}")
                 
                 # Sleep until next check
                 time.sleep(self.check_interval)
                 
         except KeyboardInterrupt:
-            self.log("\n⏹️  Stopping Autonomous Librarian...")
-            self.stop()
+            self.log("\n⏹  Stopping Autonomous Librarian...")
+            self.log(" Orchestrator stopped")
         except Exception as e:
-            self.log(f"❌ Fatal error: {e}")
-            self.stop()
-    
-    def stop(self):
-        """Clean shutdown."""
-        # Stop logger
-        if self.logger_process and self.logger_process.poll() is None:
-            self.log("⏹️  Stopping Logger...")
-            self.logger_process.terminate()
-            try:
-                self.logger_process.wait(timeout=5)
-                self.log("✅ Logger stopped")
-            except:
-                self.logger_process.kill()
-                self.log("⚠️ Logger force killed")
-        
-        self.log("👋 Autonomous Librarian stopped")
+            self.log(f" Fatal error: {e}")
+            import traceback
+            self.log(f"Traceback: {traceback.format_exc()}")
 
 
 def main():

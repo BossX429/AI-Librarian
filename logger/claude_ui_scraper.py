@@ -30,7 +30,7 @@ except ImportError as e:
     sys.exit(1)
 
 # Configuration
-BASE_DIR = Path(r"C:\Projects\AI-Librarian\logger")
+BASE_DIR = Path(r"C:\repos\AI-Librarian\logger")
 RAW_LOGS_DIR = BASE_DIR / "raw_logs"
 PROCESSED_DIR = BASE_DIR / "processed"
 LOG_FILE = BASE_DIR / "logger.log"
@@ -41,11 +41,11 @@ PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
 
 # Setup logging
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.WARNING,  # Only log warnings and errors to reduce I/O
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler(LOG_FILE),
-        logging.StreamHandler()
+        logging.FileHandler(LOG_FILE, encoding='utf-8'),  # Set UTF-8 encoding for file handler
+        logging.StreamHandler(sys.stdout)  # Ensure stream handler uses stdout
     ]
 )
 logger = logging.getLogger(__name__)
@@ -96,6 +96,42 @@ class ConversationCapture:
             logger.error(f"Error finding Claude window: {e}")
             return None
     
+    def _is_conversation_text(self, text: str) -> bool:
+        """Filter out UI noise and keep only actual conversation content."""
+        if not text or len(text.strip()) < 10:  # Skip very short text
+            return False
+        
+        # Common UI elements to filter out
+        ui_noise = [
+            'Claude', 'New chat', 'Search', 'Settings', 'Profile', 
+            'Sign in', 'Sign out', 'Menu', 'Close', 'Minimize', 'Maximize',
+            'Copy', 'Edit', 'Delete', 'Retry', 'Continue', 'Submit',
+            'Send', 'Cancel', 'OK', 'Yes', 'No', 'Back', 'Forward',
+            'Home', 'Help', 'About', 'Privacy', 'Terms', 'Feedback',
+            'Upgrade', 'Subscribe', 'Learn more', 'Get started',
+            'Pro', 'Free', 'Team', 'Enterprise', 'API', 'Docs',
+            'Projects', 'Conversations', 'Chats', 'Messages'
+        ]
+        
+        # Skip if text is just a UI label
+        if text.strip() in ui_noise:
+            return False
+        
+        # Skip if it's a single word (likely UI element)
+        if ' ' not in text.strip() and len(text.strip()) < 20:
+            return False
+        
+        # Skip common button patterns
+        button_patterns = ['Click', 'Press', 'Tap', 'Select', 'Choose']
+        if any(text.strip().startswith(pattern) for pattern in button_patterns) and len(text) < 50:
+            return False
+        
+        # Keep text that looks like conversation (longer, has spaces, punctuation)
+        has_punctuation = any(char in text for char in '.!?,;:')
+        has_multiple_words = len(text.split()) >= 3
+        
+        return has_punctuation or has_multiple_words
+    
     def extract_conversation_text(self, window) -> Optional[str]:
         """Extract text from Claude Desktop window using UI Automation."""
         try:
@@ -118,13 +154,22 @@ class ConversationCapture:
                     try:
                         if hasattr(element, 'window_text'):
                             text = element.window_text()
-                            if text and len(text.strip()) > 0:
+                            if text and len(text.strip()) > 0 and self._is_conversation_text(text):
                                 all_text.append(text.strip())
                     except:
                         continue
                 
                 if all_text:
-                    combined = "\n".join(all_text)
+                    # Deduplicate - remove repeated text blocks
+                    seen = set()
+                    unique_text = []
+                    for text_block in all_text:
+                        text_hash = hashlib.md5(text_block.encode()).hexdigest()
+                        if text_hash not in seen:
+                            seen.add(text_hash)
+                            unique_text.append(text_block)
+                    
+                    combined = "\n".join(unique_text)
                     return combined
                 
             except Exception as e:
@@ -171,7 +216,7 @@ class ConversationCapture:
         except Exception as e:
             logger.error(f"Error saving conversation: {e}")
     
-    def run(self, interval: int = 5):
+    def run(self, interval: int = 1):
         """Main loop - monitor and capture conversations."""
         logger.info(f"Starting conversation capture (checking every {interval}s)")
         logger.info("Press Ctrl+C to stop")
@@ -221,7 +266,7 @@ def main():
     
     # Start the capture
     capturer = ConversationCapture()
-    capturer.run(interval=5)
+    capturer.run(interval=3)  # Check every 3 seconds to reduce I/O load
 
 
 if __name__ == "__main__":
