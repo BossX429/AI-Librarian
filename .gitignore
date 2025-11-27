@@ -70,3 +70,7 @@ Desktop.ini
 
 # Keep directory structure
 !.gitkeep
+
+# Test environments (added from code review)
+testenv/
+.pytest_cache/
