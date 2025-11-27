@@ -19,6 +19,7 @@ import time
 import subprocess
 from pathlib import Path
 from datetime import datetime, timedelta
+from typing import List, Set, Optional
 import json
 
 # Fix Windows console encoding
@@ -34,22 +35,22 @@ class AutonomousLibrarian:
     Runs forever in background, managing everything automatically.
     """
     
-    def __init__(self):
-        self.project_root = Path(__file__).parent.parent
-        self.logger_dir = self.project_root / "logger"
-        self.compressor_dir = self.project_root / "compressor"
-        self.curator_dir = self.project_root / "curator"
-        self.raw_logs_dir = self.logger_dir / "raw_logs"
-        self.compressed_dir = self.compressor_dir / "compressed"
+    def __init__(self) -> None:
+        self.project_root: Path = Path(__file__).parent.parent
+        self.logger_dir: Path = self.project_root / "logger"
+        self.compressor_dir: Path = self.project_root / "compressor"
+        self.curator_dir: Path = self.project_root / "curator"
+        self.raw_logs_dir: Path = self.logger_dir / "raw_logs"
+        self.compressed_dir: Path = self.compressor_dir / "compressed"
         
         # Tracking
-        self.last_compression_time = None
-        self.last_curation_time = None
-        self.processed_files = set()
+        self.last_compression_time: Optional[datetime] = None
+        self.last_curation_time: Optional[datetime] = None
+        self.processed_files: Set[str] = set()
         
         # Configuration
-        self.compression_interval = 300  # 5 minutes
-        self.check_interval = 30  # Check every 30 seconds
+        self.compression_interval: int = 300  # 5 minutes
+        self.check_interval: int = 30  # Check every 30 seconds
         self.min_file_age = 60  # Wait 60 seconds before processing new files
         
         # Ensure directories exist
@@ -59,7 +60,7 @@ class AutonomousLibrarian:
         # Log file
         self.log_file = self.project_root / "orchestrator" / "orchestrator.log"
         
-    def log(self, message: str):
+    def log(self, message: str) -> None:
         """Log message to both console and file."""
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         log_msg = f"[{timestamp}] {message}"
@@ -69,10 +70,11 @@ class AutonomousLibrarian:
         try:
             with open(self.log_file, 'a', encoding='utf-8') as f:
                 f.write(log_msg + '\n')
-        except:
-            pass  # Fail silently if can't write to log
+        except (IOError, OSError) as e:
+            # Log write failures to console only
+            print(f"Warning: Could not write to log file: {e}")
     
-    def get_unprocessed_logs(self):
+    def get_unprocessed_logs(self) -> List[Path]:
         """Find raw log files that haven't been compressed yet."""
         if not self.raw_logs_dir.exists():
             return []
@@ -99,7 +101,7 @@ class AutonomousLibrarian:
         
         return unprocessed
     
-    def run_compressor(self):
+    def run_compressor(self) -> bool:
         """Run the Compressor on unprocessed logs."""
         unprocessed = self.get_unprocessed_logs()
         
@@ -137,7 +139,7 @@ class AutonomousLibrarian:
             self.log(f" Compression error: {e}")
             return False
     
-    def run_curator(self):
+    def run_curator(self) -> bool:
         """Run the Curator to update database."""
         self.log(" Running Curator...")
         

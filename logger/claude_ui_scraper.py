@@ -29,11 +29,13 @@ except ImportError as e:
     print("pip install pywinauto psutil pygetwindow")
     sys.exit(1)
 
+# Import centralized configuration
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import LOGGER_DIR, RAW_LOGS_DIR, PROCESSED_DIR, LOGGER_LOG
+
 # Configuration
-BASE_DIR = Path(r"C:\repos\AI-Librarian\logger")
-RAW_LOGS_DIR = BASE_DIR / "raw_logs"
-PROCESSED_DIR = BASE_DIR / "processed"
-LOG_FILE = BASE_DIR / "logger.log"
+BASE_DIR = LOGGER_DIR
+LOG_FILE = LOGGER_LOG
 
 # Ensure directories exist
 RAW_LOGS_DIR.mkdir(parents=True, exist_ok=True)

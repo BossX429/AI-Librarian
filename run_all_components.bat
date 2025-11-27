@@ -1,8 +1,8 @@
-@echo off
+﻿@echo off
 REM Shell Integration: Streamlined execution for AI-Librarian components
 
 REM Logger Component
-start "Logger" cmd /k "python logger\claude_desktop_logger.py"
+start "Logger" cmd /k "python logger\claude_ui_scraper.py"
 
 REM Compressor Component
 start "Compressor" cmd /k "python compressor\delta_compressor.py compress"

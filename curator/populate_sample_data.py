@@ -1,8 +1,11 @@
 import sqlite3
 from datetime import datetime, timedelta
+from pathlib import Path
+import os
 
-# Database path
-db_path = "c:\\repos\\AI-Librarian\\curator\\processed\\conversations.db"
+# Database path - use environment variable or default
+AI_LIBRARIAN_HOME = Path(os.getenv('AI_LIBRARIAN_HOME', r'C:\repos\AI-Librarian'))
+db_path = AI_LIBRARIAN_HOME / "curator" / "processed" / "conversations.db"
 
 # Sample data
 def generate_sample_data():
