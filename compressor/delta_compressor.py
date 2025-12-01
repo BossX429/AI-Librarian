@@ -424,7 +424,7 @@ class DeltaCompressor:
 
             for compressed in compressed_captures:
 
-                f.write(json.dumps(compressed, ensure_ascii=False) + '\n')
+                f.write(json.dumps(compressed, ensure_ascii=True) + '\n')
 
         
 
@@ -436,13 +436,13 @@ class DeltaCompressor:
 
         print(f" Compressed {len(captures)} captures")
 
-        print(f"   ↓ Original: {total_original:,} bytes")
+        print(f"   v Original: {total_original:,} bytes")
 
-        print(f"   ↓ Compressed: {total_compressed:,} bytes")
+        print(f"   v Compressed: {total_compressed:,} bytes")
 
-        print(f"   ↓ Compression: {compression_ratio*100:.1f}%")
+        print(f"   v Compression: {compression_ratio*100:.1f}%")
 
-        print(f"   ↓ Identical captures skipped: {identical_count}")
+        print(f"   v Identical captures skipped: {identical_count}")
 
         print(f" Saved to: {output_file}")
 
@@ -542,7 +542,7 @@ class DeltaCompressor:
 
             for capture in decompressed_captures:
 
-                f.write(json.dumps(capture, ensure_ascii=False) + '\n')
+                f.write(json.dumps(capture, ensure_ascii=True) + '\n')
 
         
 

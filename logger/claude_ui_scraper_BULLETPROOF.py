@@ -44,9 +44,9 @@ def strip_unicode(text):
     return ''.join(char if ord(char) <= 127 else '?' for char in text)
 
 # === PROTECTION CONFIGURATION ===
-MAX_CPU_PERCENT = 50.0  # Kill self if CPU usage exceeds this (allows UI automation spikes)
-MAX_MEMORY_MB = 200     # Kill self if memory exceeds this
-MAX_ELEMENTS_SCAN = 150 # Maximum UI elements to scan per cycle
+MAX_CPU_PERCENT = 25.0  # Kill self if CPU usage exceeds this
+MAX_MEMORY_MB = 150     # Kill self if memory exceeds this
+MAX_ELEMENTS_SCAN = 100 # Maximum UI elements to scan per cycle
 OPERATION_TIMEOUT = 5   # Kill operation if takes longer than 5 seconds
 CHECK_INTERVAL = 5      # Check every 5 seconds (less frequent = less CPU)
 
@@ -96,8 +96,8 @@ class CPUProtection:
                     self.violations += 1
                     logger.warning(f"!!! CPU VIOLATION: {cpu_percent:.1f}% (limit: {self.max_cpu}%)")
                     
-                    if self.violations >= 5:  # Allow 5 violations before killing
-                        logger.error(f"!!! KILLING SELF - CPU limit violated 5 times !!!")
+                    if self.violations >= 3:
+                        logger.error(f"!!! KILLING SELF - CPU limit violated 3 times !!!")
                         logger.error(f"CPU: {cpu_percent:.1f}%, Memory: {memory_mb:.1f}MB")
                         os._exit(1)  # Hard kill
                 else:

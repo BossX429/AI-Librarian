@@ -28,7 +28,7 @@ def generate_sample_data():
             "message_count": 2,
             "messages": [
                 {"message_number": 1, "role": "user", "content": "What is the weather today?", "timestamp": (datetime.now() - timedelta(days=1, hours=1)).isoformat()},
-                {"message_number": 2, "role": "assistant", "content": "The weather is sunny with a high of 25°C.", "timestamp": (datetime.now() - timedelta(days=1, hours=1, minutes=1)).isoformat()}
+                {"message_number": 2, "role": "assistant", "content": "The weather is sunny with a high of 25degC.", "timestamp": (datetime.now() - timedelta(days=1, hours=1, minutes=1)).isoformat()}
             ]
         }
     ]

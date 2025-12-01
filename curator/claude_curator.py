@@ -340,7 +340,7 @@ class ClaudeCurator:
 
     def estimate_tokens(self, text: str) -> int:
 
-        """Rough estimate of token count (1 token ≈ 4 chars)."""
+        """Rough estimate of token count (1 token ~= 4 chars)."""
 
         return len(text) // 4
 
@@ -628,7 +628,7 @@ class ClaudeCurator:
 
         with open(output_file, 'w', encoding='utf-8') as f:
 
-            json.dump(export_data, f, indent=2, ensure_ascii=False)
+            json.dump(export_data, f, indent=2, ensure_ascii=True)
 
         
 

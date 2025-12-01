@@ -182,7 +182,7 @@ Kyle and Claude worked **48 consecutive hours** to completely overhaul and optim
 
 ### After Optimization:
 - DNS Resolution: 8-15ms (-70%)
-- GPU Rendering: Unlimited FPS (+∞)
+- GPU Rendering: Unlimited FPS (+?)
 - CPU Priority: High (instant scheduling)
 - Memory: No paging (pure RAM)
 - Text Streaming: Unlimited FPS

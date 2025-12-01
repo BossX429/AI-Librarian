@@ -708,7 +708,7 @@ User asks about past conversation
 
 
 
-         ↓
+         v
 
 
 
@@ -718,7 +718,7 @@ Claude uses Desktop Commander
 
 
 
-         ↓
+         v
 
 
 
@@ -728,7 +728,7 @@ Runs librarian_query.py
 
 
 
-         ↓
+         v
 
 
 
@@ -738,7 +738,7 @@ Queries local SQLite database
 
 
 
-         ↓
+         v
 
 
 
@@ -748,7 +748,7 @@ Returns compact JSON results
 
 
 
-         ↓
+         v
 
 
 

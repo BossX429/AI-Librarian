@@ -68,7 +68,7 @@ Never lose a conversation again. The AI Librarian automatically captures, compre
 
 
 
--  **85% Compression** - Smart delta compression (10 MB → 1.5 MB)
+-  **85% Compression** - Smart delta compression (10 MB -> 1.5 MB)
 
 
 
@@ -93,7 +93,7 @@ Never lose a conversation again. The AI Librarian automatically captures, compre
 
 
 
-- ⏰ **Auto-Start** - Starts with Windows, requires zero maintenance
+- [TIME] **Auto-Start** - Starts with Windows, requires zero maintenance
 
 
 
@@ -303,7 +303,7 @@ python claude_curator.py search "your query"
 
 
 
-| **Compression Ratio** | 85% (10 MB → 1.5 MB) |
+| **Compression Ratio** | 85% (10 MB -> 1.5 MB) |
 
 
 
@@ -373,7 +373,7 @@ python claude_curator.py search "your query"
 
 
 
-    Logger  →Compressor→ Curator  → DB
+    Logger  ->Compressor-> Curator  -> DB
 
 
 
@@ -398,22 +398,22 @@ python claude_curator.py search "your query"
 
 
 
-  • Auto-starts with Windows                  
+  * Auto-starts with Windows                  
 
 
 
 
-  • Monitors & restarts agents                
+  * Monitors & restarts agents                
 
 
 
 
-  • Processes data automatically              
+  * Processes data automatically              
 
 
 
 
-  • Zero manual intervention                  
+  * Zero manual intervention                  
 
 
 
@@ -1233,7 +1233,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 
 
-- Check orchestrator is running: Task Manager → `pythonw.exe`
+- Check orchestrator is running: Task Manager -> `pythonw.exe`
 
 
 

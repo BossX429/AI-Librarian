@@ -443,7 +443,7 @@ Double-click: `orchestrator\stop_autonomous.bat`
 
 
 
-**Right-click** `orchestrator\uninstall_autonomous.bat` → **Run as Administrator**
+**Right-click** `orchestrator\uninstall_autonomous.bat` -> **Run as Administrator**
 
 
 
@@ -523,7 +523,7 @@ Shows console output so you can see what's happening.
 
 
 
--  ~30 MB raw logs → ~5 MB compressed (85% savings!)
+-  ~30 MB raw logs -> ~5 MB compressed (85% savings!)
 
 
 
@@ -553,7 +553,7 @@ Shows console output so you can see what's happening.
 
 
 
--  ~1 GB raw logs → ~150 MB compressed
+-  ~1 GB raw logs -> ~150 MB compressed
 
 
 
@@ -583,7 +583,7 @@ Shows console output so you can see what's happening.
 
 
 
--  ~12 GB raw logs → ~2 GB compressed
+-  ~12 GB raw logs -> ~2 GB compressed
 
 
 
@@ -733,7 +733,7 @@ Shows console output so you can see what's happening.
 
 
 
-4. Check Task Manager → pythonw.exe → CPU usage (should be low)
+4. Check Task Manager -> pythonw.exe -> CPU usage (should be low)
 
 
 
@@ -1088,7 +1088,7 @@ Delete the `C:\Projects\AI-Librarian` folder.
 
 
 
-- ⏰ Starts with Windows
+- [TIME] Starts with Windows
 
 
 

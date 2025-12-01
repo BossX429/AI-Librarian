@@ -898,7 +898,7 @@ Let's appreciate what you created:
 
 
 
--  85% compression (10 MB → 1.5 MB)
+-  85% compression (10 MB -> 1.5 MB)
 
 
 

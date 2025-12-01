@@ -22,8 +22,8 @@ from datetime import datetime, timedelta
 from typing import List, Set, Optional
 import json
 
-# Fix Windows console encoding
-if sys.platform == 'win32':
+# Fix Windows console encoding (only if console exists)
+if sys.platform == 'win32' and sys.stdout is not None:
     import codecs
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
@@ -64,15 +64,30 @@ class AutonomousLibrarian:
         """Log message to both console and file."""
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         log_msg = f"[{timestamp}] {message}"
-        print(log_msg)
+        
+        # Print only if console exists
+        if sys.stdout is not None:
+            print(log_msg)
+        
+        # Rotate log if too large (>10MB)
+        try:
+            if self.log_file.exists() and self.log_file.stat().st_size > 10 * 1024 * 1024:
+                # Rotate: orchestrator.log -> orchestrator.log.1
+                backup = self.log_file.with_suffix('.log.1')
+                if backup.exists():
+                    backup.unlink()
+                self.log_file.rename(backup)
+        except Exception:
+            pass  # If rotation fails, just continue
         
         # Append to log file
         try:
             with open(self.log_file, 'a', encoding='utf-8') as f:
                 f.write(log_msg + '\n')
         except (IOError, OSError) as e:
-            # Log write failures to console only
-            print(f"Warning: Could not write to log file: {e}")
+            # Log write failures - only print if console exists
+            if sys.stdout is not None:
+                print(f"Warning: Could not write to log file: {e}")
     
     def get_unprocessed_logs(self) -> List[Path]:
         """Find raw log files that haven't been compressed yet."""
@@ -203,16 +218,21 @@ class AutonomousLibrarian:
             if compressed:
                 time.sleep(2)  # Brief pause
                 self.run_curator()
+        
+        # Prevent memory leak: Clear processed files older than 24 hours
+        if len(self.processed_files) > 100:
+            current_files = {f.name for f in self.raw_logs_dir.glob("*.jsonl")}
+            self.processed_files = self.processed_files.intersection(current_files)
     
     def run_forever(self):
         """Main loop - runs forever in background."""
         self.log(" Autonomous AI Librarian Starting...")
         self.log(f"    Project: {self.project_root}")
-        self.log(f"   ⏱  Compression interval: {self.compression_interval}s")
+        self.log(f"   [TIMER]  Compression interval: {self.compression_interval}s")
         self.log(f"    Check interval: {self.check_interval}s")
         self.log("")
-        self.log("ℹ Logger runs independently (claude_storage_parser.py)")
-        self.log("ℹ Orchestrator manages compression & curation only")
+        self.log("[INFO] Logger runs independently (claude_storage_parser.py)")
+        self.log("[INFO] Orchestrator manages compression & curation only")
         self.log("")
         
         self.log(" Autonomous mode active - running 24/7")
@@ -238,7 +258,7 @@ class AutonomousLibrarian:
                 time.sleep(self.check_interval)
                 
         except KeyboardInterrupt:
-            self.log("\n⏹  Stopping Autonomous Librarian...")
+            self.log("\n[STOP]  Stopping Autonomous Librarian...")
             self.log(" Orchestrator stopped")
         except Exception as e:
             self.log(f" Fatal error: {e}")

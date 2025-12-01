@@ -198,7 +198,7 @@ python claude_curator.py export <session_id>
 
 
 
-- **Compression:** 85% smaller (10 MB → 1.5 MB)
+- **Compression:** 85% smaller (10 MB -> 1.5 MB)
 
 
 
@@ -238,22 +238,22 @@ python claude_curator.py export <session_id>
 
 
 
-1. Logger captures → raw_logs/ (10 MB)
+1. Logger captures -> raw_logs/ (10 MB)
 
 
 
 
-2. Compressor shrinks → compressed/ (1.5 MB)
+2. Compressor shrinks -> compressed/ (1.5 MB)
 
 
 
 
-3. Curator organizes → database.db (searchable!)
+3. Curator organizes -> database.db (searchable!)
 
 
 
 
-4. You search/export → Instant results!
+4. You search/export -> Instant results!
 
 
 

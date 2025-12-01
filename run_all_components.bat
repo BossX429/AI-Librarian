@@ -1,4 +1,4 @@
-﻿@echo off
+@echo off
 REM Shell Integration: Streamlined execution for AI-Librarian components
 
 REM Logger Component

@@ -1,20 +1,20 @@
 @echo off
-REM AI Librarian - Complete Workflow
-REM 1. Compresses raw logs (85% size reduction!)
+REM AI Librarian - Complete Workflow (HYDRA PARALLEL EDITION)
+REM 1. Compresses raw logs using 20-core parallel processing (90% reduction!)
 REM 2. Processes into searchable database
 REM 3. Shows statistics
 
 echo.
 echo ============================================
-echo   AI LIBRARIAN - Complete Workflow
+echo   AI LIBRARIAN - HYDRA PARALLEL WORKFLOW
 echo ============================================
 echo.
 
-REM Step 1: Compress raw logs
-echo [1/2] Compressing raw logs...
+REM Step 1: PARALLEL compress raw logs with Hydra
+echo [1/2] Compressing raw logs (PARALLEL - 20 CORES)...
 echo.
 cd /d "%~dp0compressor"
-python delta_compressor.py compress
+python hydra_compress.py compress
 if errorlevel 1 (
     echo ERROR: Compression failed!
     pause
@@ -44,7 +44,7 @@ echo   WORKFLOW COMPLETE!
 echo ============================================
 echo.
 echo Your conversations are now:
-echo   - Compressed (85%% smaller)
+echo   - Compressed (90%% smaller via PARALLEL processing)
 echo   - Organized in database
 echo   - Searchable and exportable
 echo.

@@ -103,7 +103,7 @@ Input:  logger/raw_logs/*.jsonl (raw UI captures)
 
 
 
-           ↓
+           v
 
 
 
@@ -113,7 +113,7 @@ Process: Extract + Filter + Organize
 
 
 
-           ↓
+           v
 
 
 
@@ -1153,7 +1153,7 @@ def estimate_tokens(text):
 
 
 
-    return len(text) // 4  # Rough: 1 token ≈ 4 chars
+    return len(text) // 4  # Rough: 1 token ~= 4 chars
 
 
 
@@ -1228,12 +1228,12 @@ The Curator works seamlessly with the Logger:
 
 
 
-1. **Logger** runs continuously, capturing UI → `raw_logs/*.jsonl`
+1. **Logger** runs continuously, capturing UI -> `raw_logs/*.jsonl`
 
 
 
 
-2. **Curator** processes periodically → `processed/conversations.db`
+2. **Curator** processes periodically -> `processed/conversations.db`
 
 
 

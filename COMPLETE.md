@@ -118,7 +118,7 @@ A fully autonomous, 4-agent system that requires **ZERO maintenance**:
 
 
 
-- Reduces files by 85% (10 MB → 1.5 MB!)
+- Reduces files by 85% (10 MB -> 1.5 MB!)
 
 
 
@@ -208,7 +208,7 @@ A fully autonomous, 4-agent system that requires **ZERO maintenance**:
 
 
 
-**Right-click** `orchestrator\install_autonomous.bat` → **Run as Administrator**
+**Right-click** `orchestrator\install_autonomous.bat` -> **Run as Administrator**
 
 
 
@@ -828,7 +828,7 @@ Every 30 seconds:
 
 
 
-      No? → Restart it
+      No? -> Restart it
 
 
 
@@ -838,7 +838,7 @@ Every 30 seconds:
 
 
 
-      Yes? → Wait for them to stabilize
+      Yes? -> Wait for them to stabilize
 
 
 
@@ -848,17 +848,17 @@ Every 30 seconds:
 
 
 
-       Yes? → Compress logs
+       Yes? -> Compress logs
 
 
 
 
-           Success? → Run Curator
+           Success? -> Run Curator
 
 
 
 
-               Success? → Database updated!
+               Success? -> Database updated!
 
 
 
@@ -933,12 +933,12 @@ Every 30 seconds:
 
 
 
-If Logger crashes → Orchestrator restarts it (30 sec)
+If Logger crashes -> Orchestrator restarts it (30 sec)
 
 
 
 
-If Orchestrator crashes → Task Scheduler restarts on next login
+If Orchestrator crashes -> Task Scheduler restarts on next login
 
 
 

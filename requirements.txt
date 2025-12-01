@@ -5,6 +5,7 @@
 pywinauto>=0.6.8
 psutil>=5.9.0
 pygetwindow>=0.0.9
+pywin32>=305
 
 # Data processing
 # (All built-in: json, sqlite3, pathlib, datetime, difflib)

@@ -20,11 +20,11 @@ Widespread Unicode corruption issues affected Python files and development tools
 
 ### Common Corruption Patterns:
 ```
-Original → Corrupted
-"        → \x93 or \x94
-'        → \x92 or \x96
-—        → \x97
-…        → \x85
+Original -> Corrupted
+"        -> \x93 or \x94
+'        -> \x92 or \x96
+?        -> \x97
+...        -> \x85
 ```
 
 These are Windows-1252 characters being misinterpreted as UTF-8.
@@ -62,7 +62,7 @@ These are Windows-1252 characters being misinterpreted as UTF-8.
 **Registry Changes:**
 ```
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Command Processor
-  → AutoRun: chcp 65001 >nul
+  -> AutoRun: chcp 65001 >nul
   
 (Forces UTF-8 code page on cmd.exe startup)
 ```
@@ -81,13 +81,13 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Command Processor
 
 **Corruption Patterns Fixed:**
 ```python
-# Common Windows-1252 → UTF-8 mappings
-'\x93' → '"'  # Left double quote
-'\x94' → '"'  # Right double quote
-'\x92' → "'"  # Single quote
-'\x96' → '–'  # En dash
-'\x97' → '—'  # Em dash
-'\x85' → '…'  # Ellipsis
+# Common Windows-1252 -> UTF-8 mappings
+'\x93' -> '"'  # Left double quote
+'\x94' -> '"'  # Right double quote
+'\x92' -> "'"  # Single quote
+'\x96' -> '?'  # En dash
+'\x97' -> '?'  # Em dash
+'\x85' -> '...'  # Ellipsis
 ```
 
 ### 3. VSCode Configuration
@@ -182,7 +182,7 @@ print(f"Preferred encoding: {locale.getpreferredencoding()}")
 
 3. **Editor Settings:**
    - VSCode: Set `files.encoding` to `utf8`
-   - Notepad++: Settings → Preferences → New Document → UTF-8
+   - Notepad++: Settings -> Preferences -> New Document -> UTF-8
    - Sublime Text: `"default_encoding": "UTF-8"`
 
 4. **Environment Variables:**

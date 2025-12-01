@@ -108,7 +108,7 @@ The Autonomous Librarian:
 
 
 
-**Right-click** `install_autonomous.bat` → **Run as Administrator**
+**Right-click** `install_autonomous.bat` -> **Run as Administrator**
 
 
 
@@ -283,7 +283,7 @@ Starts with visible console so you can see what's happening.
 
 
 
-    Logger  → Compressor→  Curator  → Database
+    Logger  -> Compressor->  Curator  -> Database
 
 
 
@@ -303,22 +303,22 @@ Starts with visible console so you can see what's happening.
 
 
 
-  • Monitors all agents                               
+  * Monitors all agents                               
 
 
 
 
-  • Restarts if crashed                               
+  * Restarts if crashed                               
 
 
 
 
-  • Processes new data automatically                  
+  * Processes new data automatically                  
 
 
 
 
-  • Logs everything to orchestrator.log               
+  * Logs everything to orchestrator.log               
 
 
 
@@ -1078,12 +1078,12 @@ pythonw.exe (orchestrator)
 
 
 
-    ↓
+    v
 
 
 
 
-    → python.exe (logger subprocess)
+    -> python.exe (logger subprocess)
 
 
 

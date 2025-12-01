@@ -96,10 +96,10 @@ Complete optimization of Claude Desktop to achieve **40-50% faster response time
 | Component | Before | After | Improvement |
 |-----------|--------|-------|-------------|
 | DNS Resolution | 30-50ms | 8-15ms | -70% |
-| GPU Rendering | 30 FPS | Unlimited | +∞ |
+| GPU Rendering | 30 FPS | Unlimited | +? |
 | CPU Scheduling | Normal | High | Instant |
 | Memory Access | Paged | Direct | -90% |
-| Text Streaming | 60 FPS | Unlimited | +∞ |
+| Text Streaming | 60 FPS | Unlimited | +? |
 | **OVERALL** | Baseline | **+40-50%** | **FASTER** |
 
 ### Confirmed Working:
@@ -245,7 +245,7 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\M
 ```
 
 **3. DNS:**
-- Network Settings → Adapter → IPv4 Properties → Automatic DNS
+- Network Settings -> Adapter -> IPv4 Properties -> Automatic DNS
 
 **4. Services:**
 ```powershell
@@ -296,7 +296,7 @@ Remove-Item "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\ClaudePr
 2. Close unnecessary Chrome tabs
 3. Keep GPU drivers updated (AMD Adrenalin)
 4. Monitor GPU usage in Task Manager while typing
-5. Disable Game Mode (Settings → Gaming)
+5. Disable Game Mode (Settings -> Gaming)
 
 ### Hardware Monitoring:
 - **MSI Afterburner:** Real-time GPU stats overlay

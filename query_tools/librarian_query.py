@@ -255,16 +255,16 @@ def main():
             query = sys.argv[2] if len(sys.argv) > 2 else ""
             limit = int(sys.argv[3]) if len(sys.argv) > 3 else 5
             result = librarian.search(query, limit)
-            print(json.dumps(result, indent=2, ensure_ascii=False))
+            print(json.dumps(result, indent=2, ensure_ascii=True))
         
         elif command == "get":
             session_id = sys.argv[2] if len(sys.argv) > 2 else ""
             result = librarian.get_conversation(session_id)
-            print(json.dumps(result, indent=2, ensure_ascii=False))
+            print(json.dumps(result, indent=2, ensure_ascii=True))
         
         elif command == "stats":
             result = librarian.get_stats()
-            print(json.dumps(result, indent=2, ensure_ascii=False))
+            print(json.dumps(result, indent=2, ensure_ascii=True))
         
         elif command == "date":
             after = None
@@ -280,7 +280,7 @@ def main():
                     limit = int(sys.argv[i + 1])
             
             result = librarian.search_by_date(after, before, limit)
-            print(json.dumps(result, indent=2, ensure_ascii=False))
+            print(json.dumps(result, indent=2, ensure_ascii=True))
         
         else:
             print(f"Unknown command: {command}")

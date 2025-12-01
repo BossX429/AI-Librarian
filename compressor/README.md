@@ -593,12 +593,12 @@ The Compressor fits seamlessly into the workflow:
 
 
 
-Logger → Compressor → Curator → Database
+Logger -> Compressor -> Curator -> Database
 
 
 
 
-  ↓          ↓          ↓          ↓
+  v          v          v          v
 
 
 
