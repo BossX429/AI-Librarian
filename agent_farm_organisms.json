@@ -1,0 +1,31 @@
+{
+  "deployment_date": "2025-12-02T19:22:01.571800",
+  "version": "1.0.0",
+  "agents": {
+    "conversation_analyzer": {
+      "organism_id": "deep_thinker",
+      "fitness": 1.0,
+      "role": "Analyze conversation patterns and extract insights"
+    },
+    "content_curator": {
+      "organism_id": "PRECISION_STRIKER",
+      "fitness": 0.869,
+      "role": "Curate and organize conversation archives"
+    },
+    "compression_expert": {
+      "organism_id": "EFFICIENCY_EXPERT",
+      "fitness": 1.0,
+      "role": "Optimize compression ratios and delta encoding"
+    },
+    "pattern_detector": {
+      "organism_id": "SCIENTIFIC_METHOD",
+      "fitness": 0.755,
+      "role": "Detect patterns and trends in conversations"
+    },
+    "meta_learner": {
+      "organism_id": "kyle_effect",
+      "fitness": 1.0,
+      "role": "Learn from the learning process itself"
+    }
+  }
+}
