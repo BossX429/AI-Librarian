@@ -1,26 +1,26 @@
 # Downloads Folder Inventory
 
-**Last Updated:** 2025-12-07 11:18:05
+**Last Updated:** 2025-12-07 11:48:05
 
 **Auto-synced from:** `C:\Users\kyleh\Downloads`
 
 ## Overview
 
-- **Total Files:** 86
-- **Total Size:** 580.2 MB
+- **Total Files:** 87
+- **Total Size:** 580.21 MB
 
 ## Recent Additions (Last 24 Hours)
 
-- **README_SEND_EMAILS.md** (0.00 MB) - 2.1h ago
-- **SEND_TOMORROW_MORNING.md** (0.00 MB) - 4.0h ago
-- **EMAIL_SETUP_GUIDE.md** (0.01 MB) - 4.7h ago
-- **setup_email.bat** (0.00 MB) - 4.7h ago
-- **setup_email_credentials.ps1** (0.00 MB) - 4.7h ago
-- **AUTONOMOUS_SALES_AGENT_DOCS.md** (0.01 MB) - 5.2h ago
-- **sales_agent_config.json** (0.00 MB) - 5.2h ago
-- **NEXUS_Platform_Investment_Pitch.md** (0.02 MB) - 5.8h ago
-- **code_generator_mcp_FIXED.py** (0.01 MB) - 7.6h ago
-- **git_automation_mcp.BACKUP.py** (0.02 MB) - 8.6h ago
+- **organize_downloads.ps1** (0.00 MB) - 0.3h ago
+- **README_SEND_EMAILS.md** (0.00 MB) - 2.6h ago
+- **SEND_TOMORROW_MORNING.md** (0.00 MB) - 4.5h ago
+- **EMAIL_SETUP_GUIDE.md** (0.01 MB) - 5.2h ago
+- **setup_email.bat** (0.00 MB) - 5.2h ago
+- **setup_email_credentials.ps1** (0.00 MB) - 5.2h ago
+- **sales_agent_config.json** (0.00 MB) - 5.7h ago
+- **AUTONOMOUS_SALES_AGENT_DOCS.md** (0.01 MB) - 5.7h ago
+- **NEXUS_Platform_Investment_Pitch.md** (0.02 MB) - 6.3h ago
+- **code_generator_mcp_FIXED.py** (0.01 MB) - 8.1h ago
 
 ## Files by Category
 
@@ -70,8 +70,9 @@
 
 - **LM-Studio-0.3.33-1-x64.exe** (541.36 MB)
 - **gpt4all-installer.exe** (32.01 MB)
-### Other (21 files, 0.07 MB)
+### Other (22 files, 0.07 MB)
 
+- **organize_downloads.ps1** (0.00 MB)
 - **setup_email_credentials.ps1** (0.00 MB)
 - **setup_email.bat** (0.00 MB)
 - **UV-Speed-Benchmark.ps1** (0.01 MB)
@@ -86,4 +87,3 @@
 - **HYDRA_INSTALL_ALL_IN_ONE.bat** (0.01 MB)
 - **INSTALL_HYDRA_INTEGRATION.bat** (0.00 MB)
 - **BACKUP_TO_PERFCT.bat** (0.00 MB)
-- **BACKUP_AI_LIBRARIAN.bat** (0.00 MB)
