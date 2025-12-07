@@ -1,26 +1,26 @@
 # Downloads Folder Inventory
 
-**Last Updated:** 2025-12-07 02:48:05
+**Last Updated:** 2025-12-07 09:18:05
 
 **Auto-synced from:** `C:\Users\kyleh\Downloads`
 
 ## Overview
 
-- **Total Files:** 77
-- **Total Size:** 580.15 MB
+- **Total Files:** 86
+- **Total Size:** 580.2 MB
 
 ## Recent Additions (Last 24 Hours)
 
-- **git_automation_mcp.BACKUP.py** (0.02 MB) - 0.1h ago
-- **git_automation_mcp_PARALLEL.py** (0.02 MB) - 0.1h ago
-- **FINAL-HANDOFF-NEW-CHAT.md** (0.01 MB) - 0.8h ago
-- **UV-Migration-Performance-Report.md** (0.01 MB) - 0.9h ago
-- **UV-Quick-Speed-Test.ps1** (0.00 MB) - 0.9h ago
-- **UV-Speed-Benchmark.ps1** (0.01 MB) - 0.9h ago
-- **HANDOFF-NEXT-SESSION-Dec-7-2025-FINAL.md** (0.01 MB) - 1.0h ago
-- **MCP-VERIFICATION-TESTS.md** (0.00 MB) - 1.0h ago
-- **UV-MIGRATION-COMPLETE-MCP-SERVERS.md** (0.01 MB) - 1.0h ago
-- **MCP-UV-Migration-Commands.ps1** (0.01 MB) - 1.2h ago
+- **README_SEND_EMAILS.md** (0.00 MB) - 0.1h ago
+- **SEND_TOMORROW_MORNING.md** (0.00 MB) - 2.0h ago
+- **EMAIL_SETUP_GUIDE.md** (0.01 MB) - 2.7h ago
+- **setup_email.bat** (0.00 MB) - 2.7h ago
+- **setup_email_credentials.ps1** (0.00 MB) - 2.7h ago
+- **AUTONOMOUS_SALES_AGENT_DOCS.md** (0.01 MB) - 3.2h ago
+- **sales_agent_config.json** (0.00 MB) - 3.2h ago
+- **NEXUS_Platform_Investment_Pitch.md** (0.02 MB) - 3.8h ago
+- **code_generator_mcp_FIXED.py** (0.01 MB) - 5.6h ago
+- **git_automation_mcp.BACKUP.py** (0.02 MB) - 6.6h ago
 
 ## Files by Category
 
@@ -28,8 +28,9 @@
 
 - **files.zip** (0.01 MB)
 - **NBA-foul-main.zip** (5.70 MB)
-### Code (26 files, 0.26 MB)
+### Code (27 files, 0.27 MB)
 
+- **code_generator_mcp_FIXED.py** (0.01 MB)
 - **git_automation_mcp.BACKUP.py** (0.02 MB)
 - **git_automation_mcp_PARALLEL.py** (0.02 MB)
 - **titan_windows_search_enhancer.py** (0.02 MB)
@@ -44,12 +45,17 @@
 - **INSTALL_COMPLETE_HYDRA.py** (0.01 MB)
 - **hydra_parallel_compression.py** (0.01 MB)
 - **FIX_FILES_DIRECT_1.py** (0.01 MB)
-- **FIX_FILES_DIRECT.py** (0.01 MB)
-### Data (1 files, 0.00 MB)
+### Data (2 files, 0.00 MB)
 
+- **sales_agent_config.json** (0.00 MB)
 - **tournament_results.json** (0.00 MB)
-### Documents (27 files, 0.79 MB)
+### Documents (32 files, 0.83 MB)
 
+- **README_SEND_EMAILS.md** (0.00 MB)
+- **SEND_TOMORROW_MORNING.md** (0.00 MB)
+- **EMAIL_SETUP_GUIDE.md** (0.01 MB)
+- **AUTONOMOUS_SALES_AGENT_DOCS.md** (0.01 MB)
+- **NEXUS_Platform_Investment_Pitch.md** (0.02 MB)
 - **FINAL-HANDOFF-NEW-CHAT.md** (0.01 MB)
 - **UV-Migration-Performance-Report.md** (0.01 MB)
 - **UV-MIGRATION-COMPLETE-MCP-SERVERS.md** (0.01 MB)
@@ -60,17 +66,14 @@
 - **DOWNLOADS_ANALYSIS_REPORT.md** (0.01 MB)
 - **DOWNLOADS_VISUAL_SUMMARY.md** (0.01 MB)
 - **CLEANUP_COMPLETE_REPORT.md** (0.01 MB)
-- **DOWNLOADS_SYNC_README.md** (0.01 MB)
-- **DOWNLOADS_SYNC_STATUS.md** (0.01 MB)
-- **titan_search_integration_guide.md** (0.01 MB)
-- **TITAN_SEARCH_README.md** (0.00 MB)
-- **SESSION_SUMMARY.md** (0.01 MB)
 ### Installers (2 files, 573.37 MB)
 
 - **LM-Studio-0.3.33-1-x64.exe** (541.36 MB)
 - **gpt4all-installer.exe** (32.01 MB)
-### Other (19 files, 0.07 MB)
+### Other (21 files, 0.07 MB)
 
+- **setup_email_credentials.ps1** (0.00 MB)
+- **setup_email.bat** (0.00 MB)
 - **UV-Speed-Benchmark.ps1** (0.01 MB)
 - **UV-Quick-Speed-Test.ps1** (0.00 MB)
 - **MIGRATE-ALL-MCP-SERVERS.ps1** (0.00 MB)
@@ -84,5 +87,3 @@
 - **INSTALL_HYDRA_INTEGRATION.bat** (0.00 MB)
 - **BACKUP_TO_PERFCT.bat** (0.00 MB)
 - **BACKUP_AI_LIBRARIAN.bat** (0.00 MB)
-- **VERIFY_AI_LIBRARIAN.bat** (0.00 MB)
-- **install_hydra_mcp.bat** (0.00 MB)
