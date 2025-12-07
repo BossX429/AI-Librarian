@@ -1,0 +1,10 @@
+﻿[project]
+name = "ai-librarian"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "pywinauto>=0.6.8",
+    "psutil>=5.9.0",
+    "pygetwindow>=0.0.9",
+    "pywin32>=305",
+]
