@@ -1,3 +1,9 @@
+import json
+import sys
+import difflib
+import time
+    import codecs
+    import sys
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
@@ -16,21 +22,9 @@ Performance:
 - Parallel (20 cores): Process 20 files in 500ms = 20x speedup
 """
 
-import json
-import sys
-import difflib
-from pathlib import Path
-from datetime import datetime
-from typing import Dict, List, Optional
-import hashlib
-import asyncio
-import time
-from concurrent.futures import ProcessPoolExecutor
-import multiprocessing as mp
 
 # Fix Windows console encoding
 if sys.platform == 'win32':
-    import codecs
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
 
@@ -419,7 +413,6 @@ class ParallelDeltaCompressor:
 
 def main():
     """Main execution function."""
-    import sys
     
     # Default paths
     raw_logs_dir = Path(__file__).parent.parent / "logger" / "raw_logs"

@@ -1,8 +1,7 @@
+import json
 """
 AI-Librarian with Agent-Farm Organisms
 """
-import json
-from pathlib import Path
 
 # Load organism configuration
 config_path = Path(__file__).parent / "agent_farm_organisms.json"

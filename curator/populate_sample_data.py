@@ -1,6 +1,5 @@
 import sqlite3
 from datetime import datetime, timedelta
-from pathlib import Path
 import os
 
 # Database path - use environment variable or default

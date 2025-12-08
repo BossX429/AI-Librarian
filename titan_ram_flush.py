@@ -1,13 +1,11 @@
+import sys
+import time
+import gc
+import ctypes
+import psutil
 # TITAN-Powered RAM Flush
 # Aggressive memory cleanup using parallel operations
 
-import sys
-import time
-from pathlib import Path
-import gc
-import ctypes
-from concurrent.futures import ThreadPoolExecutor
-import psutil
 
 def flush_process_working_set(pid):
     """Flush working set for a single process - runs in parallel"""

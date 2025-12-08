@@ -1,9 +1,7 @@
+import time
 # TITAN-Powered Temp Cleanup - TRUE parallel across 20 cores
 # Processes 1000+ files per second
 
-from pathlib import Path
-import time
-from concurrent.futures import ProcessPoolExecutor, as_completed
 
 def delete_file(filepath):
     """Delete single file - runs in parallel"""

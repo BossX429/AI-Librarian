@@ -1,3 +1,8 @@
+import json
+import sys
+import time
+from compressor.delta_compressor import DeltaCompressor
+            import os
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
@@ -5,18 +10,10 @@ Hydra Parallel Compression - TRUE SIMULTANEOUS EXECUTION
 Uses ProcessPoolExecutor for actual multi-core parallel processing
 """
 
-import json
-import sys
-import time
-from pathlib import Path
-from datetime import datetime
-from concurrent.futures import ProcessPoolExecutor, as_completed
-from typing import List, Dict
 
 # Add parent to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from compressor.delta_compressor import DeltaCompressor
 
 
 def compress_single_file(task_data: Dict) -> Dict:
@@ -89,7 +86,6 @@ class HydraParallelCompressor:
         
         # Determine number of workers (cores to use)
         if max_workers is None:
-            import os
             # Use all available cores, cap at 20
             max_workers = min(os.cpu_count() or 4, 20)
         

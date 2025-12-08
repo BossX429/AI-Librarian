@@ -1,8 +1,7 @@
+import os
+from datetime import datetime
 #!/usr/bin/env python3
 """Downloads → Knowledge-Base Auto-Sync"""
-import os
-from pathlib import Path
-from datetime import datetime
 
 DOWNLOADS = Path(r"C:\Users\kyleh\Downloads")
 KNOWLEDGE_BASE = Path(r"C:\repos\AI-Librarian\Knowledge-Base")

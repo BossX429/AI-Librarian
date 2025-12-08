@@ -1,9 +1,7 @@
+import sys
 #!/usr/bin/env python3
 """Test TRUE parallel compression"""
-import sys
-from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
-from hydra_parallel_compression import HydraParallelCompressor
 
 def test():
     print("=" * 70)

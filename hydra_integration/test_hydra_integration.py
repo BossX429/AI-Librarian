@@ -1,15 +1,13 @@
+import sys
 #!/usr/bin/env python3
 """
 Hydra Integration Test
 Tests the Hydra compression orchestrator
 """
 
-import sys
-from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-from hydra_compression import HydraCompressionOrchestrator
 
 
 def test():

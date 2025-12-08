@@ -1,11 +1,9 @@
+import sys
+import time
+import psutil
 # TITAN-Powered MCP Health Monitor
 # Parallel health checks across all 16 MCP servers
 
-import sys
-import time
-from pathlib import Path
-from concurrent.futures import ProcessPoolExecutor, as_completed
-import psutil
 
 MCP_SERVERS = [
     "nexus",

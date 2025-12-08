@@ -1,3 +1,9 @@
+import sys
+import sqlite3
+import json
+from datetime import datetime
+    import codecs
+    import sys
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
@@ -8,15 +14,9 @@ These tools allow Claude to query the local database directly instead of
 using expensive cloud-based memory/search tools.
 """
 
-import sys
-import sqlite3
-import json
-from pathlib import Path
-from datetime import datetime
 
 # Fix Windows console encoding
 if sys.platform == 'win32':
-    import codecs
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
 
@@ -237,7 +237,6 @@ class LibrarianQuery:
 
 def main():
     """CLI interface for query tools."""
-    import sys
     
     if len(sys.argv) < 2:
         print("Usage:")

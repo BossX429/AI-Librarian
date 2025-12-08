@@ -1,3 +1,6 @@
+import json
+import sys
+from compressor.delta_compressor import DeltaCompressor
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
@@ -5,16 +8,10 @@ Hydra Integration for AI-Librarian
 Parallel delta compression orchestration
 """
 
-import json
-import sys
-import time
-from pathlib import Path
-from datetime import datetime
 
 # Add parent to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from compressor.delta_compressor import DeltaCompressor
 
 
 class HydraCompressionOrchestrator:

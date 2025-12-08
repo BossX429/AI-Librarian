@@ -1,3 +1,11 @@
+import os
+import sys
+import time
+import subprocess
+from datetime import datetime, timedelta
+import json
+    import codecs
+            import traceback
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
@@ -13,18 +21,9 @@ What it does:
 Logger runs independently - this just handles compression/curation.
 """
 
-import os
-import sys
-import time
-import subprocess
-from pathlib import Path
-from datetime import datetime, timedelta
-from typing import List, Set, Optional
-import json
 
 # Fix Windows console encoding (only if console exists)
 if sys.platform == 'win32' and sys.stdout is not None:
-    import codecs
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
 
@@ -262,7 +261,6 @@ class AutonomousLibrarian:
             self.log(" Orchestrator stopped")
         except Exception as e:
             self.log(f" Fatal error: {e}")
-            import traceback
             self.log(f"Traceback: {traceback.format_exc()}")
 
 

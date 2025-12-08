@@ -1,3 +1,4 @@
+import os
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
@@ -5,8 +6,6 @@ AI-Librarian Configuration
 Environment-based configuration for portable deployment
 """
 
-import os
-from pathlib import Path
 
 # Base directories - use environment variables with fallbacks
 AI_LIBRARIAN_HOME = Path(os.getenv(

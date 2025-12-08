@@ -1,3 +1,9 @@
+import json
+import re
+import sqlite3
+import sys
+    import codecs
+    import sys
 #!/usr/bin/env python3
 
 # -*- coding: utf-8 -*-
@@ -16,27 +22,18 @@ structured, searchable conversations.
 
 """
 
-import json
 
-import re
 
-import sqlite3
 
-import sys
 
-from pathlib import Path
 
-from datetime import datetime
 
-from typing import List, Dict, Optional
 
-import hashlib
 
 # Fix Windows console encoding
 
 if sys.platform == 'win32':
 
-    import codecs
 
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
 
@@ -784,7 +781,6 @@ def main():
 
     """Main execution function."""
 
-    import sys
 
     
 

@@ -1,3 +1,8 @@
+import json
+import sys
+import difflib
+    import codecs
+    import sys
 #!/usr/bin/env python3
 
 # -*- coding: utf-8 -*-
@@ -18,25 +23,17 @@ Performance Impact:
 
 """
 
-import json
 
-import sys
 
-import difflib
 
-from pathlib import Path
 
-from datetime import datetime
 
-from typing import Dict, List, Optional
 
-import hashlib
 
 # Fix Windows console encoding
 
 if sys.platform == 'win32':
 
-    import codecs
 
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
 
@@ -632,7 +629,6 @@ def main():
 
     """Main execution function."""
 
-    import sys
 
     
 

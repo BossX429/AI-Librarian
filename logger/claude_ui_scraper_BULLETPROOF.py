@@ -1,3 +1,16 @@
+import os
+import json
+import time
+import logging
+import hashlib
+import psutil
+import threading
+from datetime import datetime
+import sys
+    from pywinauto import Application, Desktop
+    from pywinauto.findwindows import ElementNotFoundError
+    import pygetwindow as gw
+from config import LOGGER_DIR, RAW_LOGS_DIR, PROCESSED_DIR, LOGGER_LOG
 """
 Claude Desktop Conversation Logger - BULLETPROOF EDITION
 =========================================================
@@ -11,22 +24,8 @@ Features:
 - Memory leak prevention
 """
 
-import os
-import json
-import time
-import logging
-import hashlib
-import psutil
-import threading
-from datetime import datetime
-from pathlib import Path
-from typing import Optional, List, Dict
-import sys
 
 try:
-    from pywinauto import Application, Desktop
-    from pywinauto.findwindows import ElementNotFoundError
-    import pygetwindow as gw
 except ImportError as e:
     print(f"Missing required package: {e}")
     print("\nPlease install: pip install pywinauto psutil pygetwindow")
@@ -34,7 +33,6 @@ except ImportError as e:
 
 # Import centralized configuration
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from config import LOGGER_DIR, RAW_LOGS_DIR, PROCESSED_DIR, LOGGER_LOG
 
 # === UNICODE PREVENTION ===
 def strip_unicode(text):

@@ -1,3 +1,6 @@
+import subprocess
+import sys
+from datetime import datetime
 """
 Autonomous Git Auto-Sync for AI-Librarian
 ==========================================
@@ -5,10 +8,6 @@ Automatically commits and pushes changes every run.
 Designed to be called by scheduled task every 30 minutes.
 """
 
-import subprocess
-import sys
-from pathlib import Path
-from datetime import datetime
 
 REPO_PATH = Path(__file__).parent
 

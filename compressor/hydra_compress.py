@@ -1,15 +1,13 @@
+import sys
 #!/usr/bin/env python3
 """
 Hydra Compression CLI - Parallel compression with 20-core power
 Drop-in replacement for delta_compressor.py with PARALLEL execution
 """
-import sys
-from pathlib import Path
 
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from hydra_integration.hydra_parallel_compression import HydraParallelCompressor
 
 def main():
     """Main CLI interface - matches delta_compressor.py interface"""

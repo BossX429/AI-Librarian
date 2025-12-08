@@ -1,14 +1,12 @@
+import sys
+import psutil
+import time
+from datetime import datetime, timedelta
 # TITAN-Powered Zombie Process Hunter
 # Parallel process analysis across all 20 cores
 
-import sys
 sys.path.append('C:/repos/TITAN-FS')
 
-import psutil
-import time
-from pathlib import Path
-from concurrent.futures import ProcessPoolExecutor, as_completed
-from datetime import datetime, timedelta
 
 def check_process(proc_info):
     """Check if process is a zombie - runs in parallel"""
