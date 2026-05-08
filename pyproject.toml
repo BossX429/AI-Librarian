@@ -1,7 +1,9 @@
-﻿[project]
+[project]
 name = "ai-librarian"
 version = "0.1.0"
 requires-python = ">=3.12"
+description = "AI Librarian - autonomous capture and search for Claude Desktop"
+
 dependencies = [
     "pywinauto>=0.6.8",
     "psutil>=5.9.0",
